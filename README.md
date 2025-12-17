@@ -74,9 +74,9 @@ public function logout() {
     // Keycloak v18+ does support a post_logout_redirect_uri in combination with a
     // client_id or an id_token_hint parameter or both of them.
     // NOTE: You will need to set valid post logout redirect URI in Keycloak.
-    return redirect(Socialite::driver('keycloak')->getLogoutUrl($redirectUri, env('KEYCLOAK_CLIENT_ID')));
+    return redirect(Socialite::driver('keycloak')->getLogoutUrl($redirectUri, config(keycloak.services.client_id)));
     return redirect(Socialite::driver('keycloak')->getLogoutUrl($redirectUri, null, 'YOUR_ID_TOKEN_HINT'));
-    return redirect(Socialite::driver('keycloak')->getLogoutUrl($redirectUri, env('KEYCLOAK_CLIENT_ID'), 'YOUR_ID_TOKEN_HINT'));
+    return redirect(Socialite::driver('keycloak')->getLogoutUrl($redirectUri, config('services.keycloak.client_id'), 'YOUR_ID_TOKEN_HINT'));
     
     // You may add additional allowed parameters as listed in
     // https://openid.net/specs/openid-connect-rpinitiated-1_0.html
